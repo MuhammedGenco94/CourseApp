@@ -1,0 +1,15 @@
+﻿@model CourseApp304.Models.Request
+@{
+    ViewData["Title"] = "Thanks";
+}
+
+<div class="text-center">
+    <h2>Thank you @Model.Name</h2>
+    <h4>
+        Our course is going to be Nice ^__^
+    </h4>
+    <a asp-action="List" class="btn btn-primary">
+        Check who is coming ...!!
+    </a>
+    <a asp-action="AddRequest" class="btn btn-info">Create New</a>
+</div>

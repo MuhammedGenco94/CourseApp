@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <title>@ViewBag.Title</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $("#filter").submit(function () {
+                $(this).find(":input").filter(function () {
+                    console.log(this.value);
+                    return !this.value;
+                }).attr("disabled", "disabled");
+                return true;
+            });
+            $("form").find(":input").prop("disabled", false);
+        });
+
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+</body>
+</html>

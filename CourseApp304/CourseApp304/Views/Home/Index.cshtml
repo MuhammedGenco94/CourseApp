@@ -1,0 +1,23 @@
+﻿@*@model CourseApp304.Models.Request
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="bg-primary text-white">
+    @Model.Name
+    <br /><hr />
+    @Model.Email
+    <br /><hr />
+    @Model.Phone
+    <br /><hr />
+    @Model.Message
+    <br /><hr />
+</div>*@
+
+
+<div class="p-4 text-center">
+    <h2>The course is going to start soon</h2>
+    <h4>You are invited.</h4>
+    <a asp-action="AddRequest" class="btn btn-primary">Create a Request</a>
+</div>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CourseApp304.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="m-4">
+    <div class="bg-success texr-white p-4">
+        Course List
+    </div>
+    <div class="card my-2">
+        <div class="card-body">
+            <form id="filter" method="get">
+                <div class="form-group">
+                    <input name="name" value="@ViewBag.Name" class="form-control" placeholder="Course Name" />
+                </div>
+                <div class="form-group">
+                    <input name="price" value="@ViewBag.Price" class="form-control" placeholder="Max Price" />
+                </div>
+                <div class="form-group">
+                    <input name="instructor" value="@ViewBag.instructor" class="form-control" placeholder="InstructorName" />
+                </div>
+                <div class="custom-control custom-checkbox mb-2">
+                    <input name="isActive" checked="@ViewBag.isActive" class="custom-control-input" id="isActive" type="checkbox" />
+                    <label class="custom-control-label" for="isActive">Active</label>
+                </div>
+                <button class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-bordered table-striped m-4">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>is Active</th>
+            <th>InstructorName</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.isActive</td>
+                <td>@item.Instructor.Name</td>
+                <td>
+                    <form asp-action="Delete">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary m-4">
+    Create
+</a>
+
+
+@*<@Html.ActionLink(
+    "Delete",
+    "Delete",
+    new { id = item.storyId },
+    new { onclick = "return confirm('Are you sure you wish to delete this article?');" })>*@

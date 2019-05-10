@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CourseApp304.Models.Student>
+@* Index imiz liste halinde geleceği için Ienumerable yaptık*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<div class="m-4">
+        <div class="bg-success text-white p-4">
+            Student List
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th colspan="3">Student Adddress</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        @if (item.Address != null)
+                        {
+                            <td>@item.Address.City</td>
+                            <td>@item.Address.Country</td>
+                            <td>@item.Address.Address</td>
+                        }
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>*@
+
+<a asp-action="Create" asp-route-id="@Model<Student>.Id" class="btn btn-primary m-3 float-right">Create</a>
+
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Name</th>
+            @*<th colspan="3">Student Adddress</th>*@
+            <th>City</th>
+            <th>Country</th>
+            <th>Address</th>
+            
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Name</td>
+            @if (item.Address != null)
+            {
+                <td>@item.Address.City</td>
+                <td>@item.Address.Country</td>
+                <td>@item.Address.Address</td>
+                
+            }
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+
+                </td>
+        </tr>
+
+        }
+    </tbody>
+</table>
+
